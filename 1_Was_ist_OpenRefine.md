@@ -23,7 +23,7 @@ Dank verschiedener Features ist es sehr leicht, sich in OpenRefine einzuarbeiten
 - Die gängisten Funktionsweisen sind über **Menüs** ausfürbar.
 - Zu OpenRefine gibt es eine **gute Dokumentation**, sowohl intern, als auch durch eine sehr aktive Community. Dazu mehr im [Fazit](3_Fazit.md)
 
-## OpenRefine ist Vielfältig
+## OpenRefine ist vielfältig
 
 OpenRefine hat ein extrem vielseitiges **Einsatzspektrum**. Durch eine 
 
