@@ -25,6 +25,19 @@ Dank verschiedener Features ist es sehr leicht, sich in OpenRefine einzuarbeiten
 
 ## OpenRefine ist vielfältig
 
-OpenRefine hat ein extrem vielseitiges **Einsatzspektrum**. Durch eine 
+OpenRefine hat ein extrem vielseitiges **Einsatzspektrum**:
+- Import/Export:
+  - Dateiformate: CSV, TSV, Text files, JSON, XML, ODS, XLS, XLSX , MARC, RDF, Wikitext, …
+  - Datenquellen: Lokale Datei(en), ZIP Archive, URL, Clipboard, SQL, Google Sheet, Wikidata, …
+- Abgleich mit Normdateien (reconciliation)
+- Fetchen von Websites/API calls
+- Schnittstelle zu Wikidata
 
+Zudem bietet es **verschiedene Eingabemöglichkeiten** für User mit unterschiedlichen Kompetenzen an:
+- Die wichtigsten Funktionen sind über die Menüs neben den Spaltenbezeichnungen abrufbar.
+- Für umfangreichere Operationen steht die OpenRefine-eigene Programmiersprache *GREL* zur Verfügung (s. [Manual](https://openrefine.org/docs/manual/grelfunctions)).
+- Schließlich ist in OpenRefine standardmäßig auch die Java-Implementierung von Python *Jython* installiert, was den Zugriff auf die weite Welt der Python- sowie Java-Programmbibliotheken ermöglicht.
+
+Schließlich gibt es dank der umtriebigen Community auch div. **Erweiterungen**, die weitere Funktionalität ergänzen:  [Hier eine offizielle Liste](https://openrefine.org/extensions). 
+ 
 [Vorige Seite](README.md) | [Inhaltsverzeichnis](README.md) | [Nächste Seite](2_Anwendungsbeispiel.md)
