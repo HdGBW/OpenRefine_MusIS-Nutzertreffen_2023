@@ -31,7 +31,7 @@ muss also geändert werden zu:
 
 >| Nachname | Strasse | PLZ | Ort | Staat | Normdaten |
 >| -------- | ------- | --- | --- | ----- | --------- |
->| Österreichische Nationalbibliothek | Josefsplatz 2 | A-1015 | Erde§Europa§Österreich§Wien§Wien§Wien | A | O-GND~2020893-5~https://d-nb.info/gnd/2020893-5 |
+>| Österreichische Nationalbibliothek | Josefsplatz 2 | A-1015 | Erde§Europa§Österreich§Wien§Wien§Wien | A | O-GND\~2020893-5\~https://d-nb.info/gnd/2020893-5 |
 
 Dies soll mit Hilfe von OpenRefine in vier Schritten geschehen:
 
