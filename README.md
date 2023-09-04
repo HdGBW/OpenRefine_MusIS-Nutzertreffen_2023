@@ -21,7 +21,7 @@ Im Beipiel geht es konkret darum, Körperschaftsdaten aus einer Objektdatenbank 
 
 1. [Was ist OpenRefine?](1_Was_ist_OpenRefine.md)
 2. [Anwendungsbeispiel](2_Anwendungsbeispiel.md)
-    1. [Daten vereinheitlichen](2_Anwendungsbeispiel.md#daten-vereinheitlichen)
+    1. [Daten vereinheitlichen und Duplikate entfernen](2_Anwendungsbeispiel.md#daten-vereinheitlichen-und-duplikate-entfernen)
     2. [Informationen aufteilen](2_Anwendungsbeispiel.md#informationen-aufteilen)
     3. [Normdatenabgleich](2_Anwendungsbeispiel.md#Normdatenabgleich)
     4. [Thesauruspfade via GeoNamesID ergänzen](2_Anwendungsbeispiel.md#thesauruspfade-via-geonamesid-ergänzen)
