@@ -63,6 +63,8 @@ In der Kopfzeile über dem Datenset kann man mehr oder weniger Zeilen einblenden
 
 ## Daten vereinheitlichen und Duplikate entfernen
 
+### Datenbereinigung
+
 Im Feld "Herkunft/Leihnehmer" kommen die selben Körperschaften in unterschiedlichen Schreibweisen mehrmals vor. 
 Damit wir durch den Import in IMDAS nicht mehrerer Datensätze für die gleichen Entitäten erstellen lassen, müssen wir zunächst die Schreibweisen angleichen, um dann die doppelten Einträge entfernen zu können.
 
@@ -102,6 +104,8 @@ Beide können über "Edit cells" -> "Common transforms" aufgerufen werden.
 ![Common Transformations](./images/Common_transforms.png)
 *Die voreingestellten Zellentransformationen.*
 
+### Vereinheitlichung
+
 Nun können wir anhand des Text Facets uns daran setzen, die Einträge anzupassen - doch es gibt noch eine bessere Möglichkeit: die cluster-Funktion.
 Dafür klicken wir in der Kopfzeile des Text Facets auf den "Cluster"-Button - und rufen so eine der wichtigsten Funktion zur Datenbereinigung in OpenRefine auf.
 
@@ -115,11 +119,47 @@ Durch den Eingabeschlitz (in der Abbildung etwas verdeckt) lässt sich der gewü
 Über "Method" und "Keying function" lassen sich verschiedene Algorithmen ausprobieren. 
 Meistens lohnt es sich, alle durchzuprobieren, was wir in diesem Falle auch machen.
 
-> TODO: Weiter mit Deduplizieren
+### Duplikate entfernen
+
+Da nun alle Schreibvarianten beseitigt sind, können wir nun die Duplikate löschen. 
+Da es in OpenRefine keine Funktion dazu gibt, muss man ein bisschen tricksen.
+
+Zunächst lassen wir die Spalte über das Dropdown-Menü sortieren.
+OpenRefine sortiert nun für uns die Werte alphabetisch, behält aber die ursprüngliche Sortierung noch im Speicher. 
+Erst wenn wir über das in der Kopfzeile aufgetauchte `Sort`-Menü  `Reorder rows permanently` ausgewählt haben, wird die neue Sortierung fixiert.
+![Sortierungsmenü](./images/Sort.png)
+*Das Sortierungsmenü in der Kopfzeile steht erst nach einer Sortierung zur Verfügung.*
+
+Diese Fixierung ermöglicht es aber nun, über das Spalten-Menü -> `Edit cells` -> `Blank down` auszuwählen.
+Nun werden alle aufeinanderfolgenden Dubletten gelöscht.
+
+Mit dem Facet für leere Zellen über Spalten-Menü -> `Facet` -> `Customized facets` -> `Facet by blank (null or empty string)` können entweder alle Zeilen mit oder ohne Werten in dieser Spalte ausgewählt werden.
+Mit `true` filtern wir die leeren Zeilen heraus, und können diese nun entfernen lassen, indem über das Dropdown-Menü in der ersten Spalte `All` -> `Edit rows` -> `Remove matching rows` aktiviert wird.
+
+Zurück bleiben nur die Zeilen mit -- in diesem Falle eindeutigen -- Werten.
 
 ## Informationen aufteilen
 
 Nachdem wir nun sichergestellt haben, dass jede Eintrag eindeutig ist, können wir uns daran machen, die Angaben auf die entsprechenden Zielfelder in IMDAS -- Nachname, Adresse, PLZ, Ort -- zu verteilen. Da das Feld "Normdaten" ein besonderes Vorgehen erfordert, werden es im Anschluss an diesen Schritt erzeugen.
+
+Um die Spalte `Herkunft_Leihgeber` anhand des `;` in mehrere Spalten aufzuteilen geht man wieder in das Spaltenmenü -> `Edit colum` -> `Split into several columns...`, und gibt im sich öffnenden Fenster als Seperator `;` ein.
+
+Da bei manchen Feldern den Semikolons ein Leerzeichen folgte, haben wir nun wieder ein paar Zellen mit Leerzeichen am Anfang.
+Diese werden wir in allen Spalten los, wenn wir in der Spalte `All` -> `Edit all columns` -> `Trim leading and trailing whitesapce...` auswählen.
+
+Wenn wir nun die erste und zweite Spalte über Spaltenmenü -> `Edit column` -> `Rename this column...` in `Nachname` und `Adresse` umbenannt haben, sind wir mit diesen fertig.
+
+Die Spalte mit den Postleitzahlen und Orten teilen wir wieder anhand eines Trennzeichen auf, diesmal mit dem Leerzeichen ` ` als Delimiter.
+Die so gewonnene zweite Spalte können wir auch gleich in `Ort` umbenennen.
+
+In der Spalte davor mit den Postleitzahlen hat sich nun in der Darstellung etwas geändert, denn alle Postleitzahlen ohne Länderkennung sind nun grün.
+Dies bedeutet, dass OpenRefine die Werte in diesen Zellen als Datentyp "Nummer" erkannt hat, während die schwarze Schrift für den Datentyp "Text" steht.[^1]
+
+> [!IMPORTANT]
+> Hier weiter mit:
+> Um schließlich noch die `Staat`-Spalte mit den Länderkennzeichnungen aus der Postleitzahl zu gewinnen, müssen wir wieder einen Facet erstellen, diesmal einen ...
+
+[^1]: Andere Datentypen sind Boolsche Werte (`true`/`false`) und Datums- und Zeitangaben.
 
 ## Normdatenabgleich
 
