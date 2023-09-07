@@ -142,6 +142,8 @@ Zurück bleiben nur die Zeilen mit -- in diesem Falle eindeutigen -- Werten.
 
 Nachdem wir nun sichergestellt haben, dass jede Eintrag eindeutig ist, können wir uns daran machen, die Angaben auf die entsprechenden Zielfelder in IMDAS -- Nachname, Adresse, PLZ, Ort -- zu verteilen. Da das Feld "Normdaten" ein besonderes Vorgehen erfordert, werden es im Anschluss an diesen Schritt erzeugen.
 
+### Variante 1: Spalten erstellen
+
 Um die Spalte `Herkunft_Leihgeber` anhand des `;` in mehrere Spalten aufzuteilen geht man wieder in das Spaltenmenü -> `Edit colum` -> `Split into several columns...`, und gibt im sich öffnenden Fenster als Seperator `;` ein.
 
 Da bei manchen Feldern den Semikolons ein Leerzeichen folgte, haben wir nun wieder ein paar Zellen mit Leerzeichen am Anfang.
@@ -152,16 +154,78 @@ Wenn wir nun die erste und zweite Spalte über Spaltenmenü -> `Edit column` -> 
 Die Spalte mit den Postleitzahlen und Orten teilen wir wieder anhand eines Trennzeichen auf, diesmal mit dem Leerzeichen ` ` als Delimiter.
 Die so gewonnene zweite Spalte können wir auch gleich in `Ort` umbenennen.
 
+### Variante 2: Operation History verwenden
+
+Die im vorigen Abschnitt vorgenommenen Schritte sind bei der Aufbereitung von Daten aus dem Feld "Herkunft/Leihgeber" aus dieser Spalte immer gleich.
+Für solche Fälle bietet sich die Exportfunktion der Operation history an: 
+Aus jedem Projekt können Arbeitsschritte (komplett oder auszugsweise) im JSON-Format exportiert werden, um sie in einem anderen Projekt zu laden.
+Dies ermöglicht eine gewisse Form der Automatisierung repetitiver Aufgaben bei gleich strukturierten Datensets.
+
+Um nun die oben beschrieben Transformation zu laden, öffnen Sie die (Spalten_erstellen.json)[./datasets/Spalten_erstellen.json] mit einem einfachen Texteditor und kopieren Sie den Inhalt in das Fenster "Apply Operation History", dass Sie im "Undo/Redo"-Seitenpanel mit dem Button "Apply..." öffnen können.
+
+![Apply Operation History mit JSON-Inhalt](./images/Apply_Operation_History.png)
+*Die in JSON verfassten Arbeitsschritte aus der Datei "Spalten_erstellen.json" im Apply Operation History-Fenster.*
+
+Mit einem Klick auf "Perform operations" werden alle enthaltenen Transformationen umgesetzt.
+
+### Staat-Spalte aus gefilterter PLZ-Spalte
+
+Als letztes bleibt, noch die `Staat`-Spalte mit den Länderkürzeln aus den Postleitzahlen zu gewinnen.
+
 In der Spalte davor mit den Postleitzahlen hat sich nun in der Darstellung etwas geändert, denn alle Postleitzahlen ohne Länderkennung sind nun grün.
 Dies bedeutet, dass OpenRefine die Werte in diesen Zellen als Datentyp "Nummer" erkannt hat, während die schwarze Schrift für den Datentyp "Text" steht.[^1]
 
-> [!IMPORTANT]
-> Hier weiter mit:
-> Um schließlich noch die `Staat`-Spalte mit den Länderkennzeichnungen aus der Postleitzahl zu gewinnen, müssen wir wieder einen Facet erstellen, diesmal einen ...
+Um bestimmte Zeilen von Datentransformationen auszuschließen, können in OpenRefine Facets und Filter verwendet werden. 
+Damit Beispielsweise die Spaltenaufteilung nach `-` bei den Postleitzahlen nur bei solchen mit Länderkürzel angewendet werden, können wir zunächst einen Numeric Facet erstellen, und dort anschließend den Datentyp "Numeric" abwählen.
+
+![Numeric Facet](./images/Numeric_facet.png)
+*Aktivierter Numeric Facet in der Spalte mit den Postleitzahlen*
+
+Nachdem wir so die Zeilen mit Nummern-Werten herausgefiltert haben, teilen wir die Spalte wieder über `Split into several columns ...` mit dem Separator `-` in mehrere Spalten auf.
+Diesmal allerdings möchten wir die Originalspalte behalten, und entfernen daher den Haken bei "Remove this column".
+
+Wenn wir danach den Numeric facet wieder entfernen, sehen wir, dass die split-Operation nur auf die Spalten mit Datentyp Text angewendet wurde. 
+
+![Die aufgeteilte Spalte mit Postleitzahlen](./images/Split_gefiltert.png)
+*Die Originalspalte mit den Postleitzahlen und das Ergebenis der Split-Operation bei aktiver Filterung*
+
+Anschließend entfernen wir die Spalte mit den ausländischen Postleitzahlen, nennen die Spalte mit den Länderkürzeln zu `Staat` um, verschieben sie an das Ende des Datensets und ändern die Spaltenbezeichnung mit den Postleitzahlen zu `PLZ`.
 
 [^1]: Andere Datentypen sind Boolsche Werte (`true`/`false`) und Datums- und Zeitangaben.
 
 ## Normdatenabgleich
+
+In diesem Abschnitt werden wir die Spalte `Nachname` mit den Datensätzen der [Gemeinsamen Normdatei](https://www.dnb.de/DE/Professionell/Standardisierung/GND/gnd_node) abgleichen, um die GND-ID der Körperschaften zu erhalten. 
+Ein solcher Abgleich mit einem externe Webservice wird als reconciling bezeichnet.
+
+Für die GND stellt das [Hochschulbibliothekszentrum des Landes NRW](https://www.hbz-nrw.de/produkte/linked-open-data) unter https://lobid.org/gnd/reconcile/ einen entsprechenden Dienst zur Verfügung.
+
+Um diese URL in OpenRefine zu hinterlegen, muss im Spaltenmenü für `Nachname` -> `Reconcile` -> `Start reconcoling...` angewählt werden.
+Im Dialogfenster kann dann mit "Add standard sercice..." die URL eingegeben werden.
+
+Nun stetht der Service als "GND reconciliation for OpenRefine" zur Verfügung.
+
+Wird dieser ausgewählt, öffnet sich ein Fenster, in dem der abzugleichende Entitätstyp ausgewählt werden kann. 
+In unserem Fall wäre das die "Körperschaft".
+
+Wichtig: 
+Den Haken bei "Auto-match candidates with high confidence" abwählen.
+Ansonsten erstellt OpenRefine automatisch matches zu GND-Einträgen mit hoher Übereinstimmung - was allerdings nicht immer die tatsächlich gemeinte Entität sein muss.
+
+![Reconciliation Detailfenster](./images/Reconciliation_window.png)
+*Die Voreinstellungen zur reconciliation.*
+
+Nach erfolgten Datenabgleich werden in den Zellen alle Datensätze angezeigt, die OpenRefine als ähnlich zum Zelleneintrag betrachtet.
+
+![Anzeige des Reconciliation-Ergebnis](./images/Reconciliation.png)
+*Das Ergebnis einer reconciliation: Unter jedem Begriff wir ein Link zu einem GND-Datensatz angezeigt.*
+
+Unter jedem Begriff wird nun ein Link zum vorgeschlagenen Datensatz angezeigt.
+Per Mouseover über den Link werden auch einige weiteren Informationen angezeigt, und mit den Buttons "Match this cell" wird der Datensatz dieser Zelle oder mit "Match all identical cells" allen Zellen in der Spalte mit gleichen Wert zugewiesen.
+Sollten alle Vorschläge nicht stimmen, kann über "Search for match" nach weiteren möglichen Matches in der GND gesucht werden, oder mit "Create new item" festgelegt werden, dass es keinen Match gibt.
+
+
+
 
 ## Thesauruspfade via GeoNamesID ergänzen
 

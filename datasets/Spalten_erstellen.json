@@ -1,0 +1,89 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Herkunft_Leihgeber",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": ";",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column Herkunft_Leihgeber by separator"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Herkunft_Leihgeber 1",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Herkunft_Leihgeber 1 using expression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Herkunft_Leihgeber 2",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Herkunft_Leihgeber 2 using expression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Herkunft_Leihgeber 3",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Herkunft_Leihgeber 3 using expression value.trim()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Herkunft_Leihgeber 1",
+    "newColumnName": "Nachname",
+    "description": "Rename column Herkunft_Leihgeber 1 to Nachname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Herkunft_Leihgeber 2",
+    "newColumnName": "Adresse",
+    "description": "Rename column Herkunft_Leihgeber 2 to Adresse"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Herkunft_Leihgeber 3",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": " ",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column Herkunft_Leihgeber 3 by separator"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Herkunft_Leihgeber 3 2",
+    "newColumnName": "Ort",
+    "description": "Rename column Herkunft_Leihgeber 3 2 to Ort"
+  }
+]
