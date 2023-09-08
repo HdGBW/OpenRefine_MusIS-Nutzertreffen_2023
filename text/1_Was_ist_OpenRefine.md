@@ -2,7 +2,7 @@
 
 ## Die Basics
 
-<img src="images/OpenRefine_Logo.png" alt="OpenRefine-Logo" width="200" />
+<img src="../images/OpenRefine_Logo.png" alt="OpenRefine-Logo" width="200" />
 
 OpenRefine ist eine **kostenlose Open-Source-Software** zur **Bereinigung und Aufbereitung von (unstrukturierten) Daten**.
 Genauer gesagt ermöglicht es, Datensätze aus unterschiedlichen Quellen zu sichten und zu filtern, zu transformieren, mit externen Daten anzureichern und in eine Vielzahl von Formaten wieder zu exportieren.
@@ -40,4 +40,4 @@ Zudem bietet es **verschiedene Eingabemöglichkeiten** für User mit unterschied
 
 Schließlich gibt es dank der umtriebigen Community auch div. **Erweiterungen**, die weitere Funktionalität ergänzen:  [Hier eine offizielle Liste](https://openrefine.org/extensions). 
  
-[Vorige Seite](README.md) | [Inhaltsverzeichnis](README.md) | [Nächste Seite](2_Anwendungsbeispiel.md)
+[Vorige Seite](../README.md) | [Inhaltsverzeichnis](../README.md) | [Nächste Seite](./2_Anwendungsbeispiel.md)
