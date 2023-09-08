@@ -5,21 +5,22 @@
 <img src="../images/OpenRefine_Logo.png" alt="OpenRefine-Logo" width="200" />
 
 OpenRefine ist eine **kostenlose Open-Source-Software** zur **Bereinigung und Aufbereitung von (unstrukturierten) Daten**.
-Genauer gesagt ermöglicht es, Datensätze aus unterschiedlichen Quellen zu sichten und zu filtern, zu transformieren, mit externen Daten anzureichern und in eine Vielzahl von Formaten wieder zu exportieren.
+Genauer gesagt ermöglicht sie es, Daten aus unterschiedlichen Quellen zu laden, zu sichten und zu filtern, zu transformieren, mit externen Daten anzureichern und in eine Vielzahl von Formaten wieder zu exportieren.
 
-Am Anfang (2010) entwickelten die [Freebase](https://en.wikipedia.org/wiki/Freebase_(database))-Designern [Metaweb](https://en.wikipedia.org/wiki/Metaweb) OpenRefine, die allerdings schnell von Google aufgekauft wurden.
+OpenRefine basiert auf einer Entwicklung der [Freebase](https://en.wikipedia.org/wiki/Freebase_(database))-Designern [Metaweb](https://en.wikipedia.org/wiki/Metaweb), die 2010 von Google aufgekauft wurden.
 Seitdem 2012 Google die Arbeiten an OpenRefine eingestellt hatte, wird die Weiterentwicklung der damals "GoogleRefine" genannten Software von der **Opensource-Community** unter dem nun bekannten Namen fortgesetzt. 
 
 OpenRefine läuft auf allen Plattformen (Windows, Mac, Linux) und benötigt als **Systemvoraussetzung** Java sowie einen der gängigen Browser (Google Chrome, Chromium, Opera, Microsoft Edge, Safari, Firefox).
 
-**Wichtig:** Der Browser dient nur als user interface, das Programm läuft aber lokal!
+> [!NOTE]
+> Der Browser dient nur als user interface, das Programm läuft aber lokal.
 
 ## OpenRefine ist leicht zu lernen
 
 Dank verschiedener Features ist es sehr leicht, sich in OpenRefine einzuarbeiten:
-- OpenRefine lädt die Daten in einem eigenen Arbeitsspeicher. Der **Originaldatensatz wird** durch die Operationen in OR **nicht veränder**! Dies erleichtert es, neue Funktionen einfach mal auszuprobieren.
-- Bei bestimmten Operationen wird das Resultat in einer **Vorschau** angezeigt. Sie kann sichergestellt werden, dass die eingestellte Transformation auch die beabsichtigte ist.
-- **Undo/Redo**: Die meisten Arbeitsschritte werden in einer Operation-History automatisch geloggt, so dass zu jedem belieben Arbeitszustand zurückgekehrt werden kann.
+- Die Daten werden in einem eigenen Arbeitsspeicher geladen. Der **Originaldatensatz wird** durch die Operationen in OpenRefine **nicht veränder**! Dies erleichtert es, neue Funktionen einfach mal auszuprobieren.
+- Bei bestimmten Operationen wird das Resultat in einer **Vorschau** angezeigt. So kann sichergestellt werden, dass die eingestellte Transformation auch zum beabsichtigten Ergebnis führt.
+- **Undo/Redo**: Die meisten Arbeitsschritte werden in einer Operation-History automatisch geloggt, so dass zu jedem vorherigen Arbeitszustand zurückgekehrt werden kann.
 - Die gängisten Funktionsweisen sind über **Menüs** ausfürbar.
 - Zu OpenRefine gibt es eine **gute Dokumentation**, sowohl intern, als auch durch eine sehr aktive Community. Dazu mehr im [Fazit](3_Fazit.md)
 
@@ -36,8 +37,8 @@ OpenRefine hat ein extrem vielseitiges **Einsatzspektrum**:
 Zudem bietet es **verschiedene Eingabemöglichkeiten** für User mit unterschiedlichen Kompetenzen an:
 - Die wichtigsten Funktionen sind über die Menüs neben den Spaltenbezeichnungen abrufbar.
 - Für umfangreichere Operationen steht die OpenRefine-eigene Programmiersprache *GREL* zur Verfügung (s. [Manual](https://openrefine.org/docs/manual/grelfunctions)).
-- Schließlich ist in OpenRefine standardmäßig auch die Java-Implementierung von Python *Jython* installiert, was den Zugriff auf die weite Welt der Python- sowie Java-Programmbibliotheken ermöglicht.
+- Schließlich ist in OpenRefine standardmäßig auch die Java-Implementierung von Python *Jython* installiert, was den Zugriff auf die weite Welt der Python- sowie Java-Programmbibliotheken ermöglicht. Zusätzlich wird auch *Clojure* unterstützt.
 
-Schließlich gibt es dank der umtriebigen Community auch div. **Erweiterungen**, die weitere Funktionalität ergänzen:  [Hier eine offizielle Liste](https://openrefine.org/extensions). 
+Und dank der umtriebigen Community gibt es auch diverse **Erweiterungen**, die weitere Funktionalität ergänzen:  [hier eine offizielle Liste](https://openrefine.org/extensions). 
  
 [Vorige Seite](../README.md) | [Inhaltsverzeichnis](../README.md) | [Nächste Seite](./2_Anwendungsbeispiel.md)
