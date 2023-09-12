@@ -33,7 +33,7 @@ Im Grunde bedeutet dieser Ausdruck:
 1. `cell.corss("Ortsthesaurus", "GeoNamesID")`: Gehe in das Projekt "Ortsthesaurus" und Vergleiche die Werte in dieser Spalte mit der dortigen Spalte "GeoNamesID" ab.
 2. `cells["PFADE"].value`: Stimmen diese Werte und die GeoNames-ID des "Ortsthesaurus"-Projektes überein, ergänze hier den entsprechenden Wert aus der Spalte "PFAD" des Projektes "Ortsthesaurus".
 
-![Spalte ergänzen durch corss-Funktion](../images/Cross.png)
+![Spalte ergänzen durch corss-Funktion](../images/cross.png)
 *Ergänzen der Thesauruspfade aus der Export_Ortsthesaurus.xlsx in die Körperschaften-Tabelle mittels `cross()`-Funktion.*
 
 Nachdem wir uns über die Vorschau versichert haben, dass die Thesauruspfade korrekt übernommen werden, und wir die Transformation bestätigen, bleibt uns nur noch, die Spalten `Ort` und `GeoNamesID` zu löschen, und die Spalte `Thesauruspfad` in `Ort` umzubenennen.
