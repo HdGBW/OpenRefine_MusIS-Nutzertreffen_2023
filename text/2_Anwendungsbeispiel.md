@@ -8,6 +8,7 @@ Entsprechend variantenreich können die Einträge ausfallen.
 
 Die Schreibanweisung für das Feld lautet: 
 > Name; Straße Hausnummer, PLZ Ort. 
+
 Tatsächlich finden sich in den Feldinhalten Schreibvarianten, Typos und auch ausgelassene Informationen wie z. B. fehlende Straßennamen.
 
 Als Grundlage für diese kleine Einführung in OpenRefine wurde von 25 exemplarischen Datensätzen die Inhalte des Feldes ausgelesen und hier im Repositorium unter der [Herkunft.xlsx](../data/Herkunft.xlsx) abgelegt.

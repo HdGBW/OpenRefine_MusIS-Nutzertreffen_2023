@@ -54,7 +54,7 @@ Zu dieser gelangen wir über den `Cluster`-Button in der Kopfzeile des Text Face
 Dieses clustering gruppiert ähnliche Werte zueinander, die dann durch Auswahl des bevorzugten Eintrags vereinheitlich werden können.
 Durch den Eingabeschlitz (in der Abbildung etwas verdeckt) lässt sich der gewünschte Wert auch unabhängig von den vorgefundenen Einträgen anpassen.
 
-Über `Method` und `Keying function` lassen sich verschiedene Algorithmen ausprobieren. 
+Über die Dropdown-Menüs `Method` und `Keying function` lassen sich verschiedene Algorithmen ausprobieren. 
 Meistens lohnt es sich, alle durchzuprobieren und die gewünschten Anpassungen vorzunehmen, was wir in diesem Falle auch machen.
 
 ### Duplikate entfernen
@@ -62,7 +62,9 @@ Meistens lohnt es sich, alle durchzuprobieren und die gewünschten Anpassungen v
 Da nun alle Schreibvarianten beseitigt wurden, können wir nun die Duplikate löschen. 
 In OpenRefine gibt es allerdings keine spezielle Funktion dazu, daher müssen wir nun ein bisschen tricksen.
 
-Zunächst lassen wir die Spalte über ihr Menü sortieren.
+Zunächst lassen wir die Spalte über ihr Menü sortieren (Spaltenmenü -> `Sort...`).
+Beim sich öffnenden Fenster muss nichts angepasst werden und wir bestätigen die Sortierung mit `OK`.
+
 Auch wenn die Anzeige sich nun ändert, behält OpenRefine die ursprüngliche Sortierung noch im Speicher. 
 Erst wenn wir über das in der Kopfzeile aufgetauchte `Sort`-Menü  `Reorder rows permanently` ausgewählt haben, wird die neue Sortierung fixiert.
 
@@ -72,8 +74,8 @@ Erst wenn wir über das in der Kopfzeile aufgetauchte `Sort`-Menü  `Reorder row
 Diese Fixierung ermöglicht es aber nun, über das Spalten-Menü -> `Edit cells` -> `Blank down` auszuwählen.
 Mit `Blank down` werden alle *aufeinanderfolgenden* Dubletten gelöscht.
 
-Mit dem Facet für leere Zellen (Spalten-Menü -> `Facet` -> `Customized facets` -> `Facet by blank (null or empty string)`) können entweder alle Zeilen mit oder ohne Werten in dieser Spalte ausgewählt werden.
-Mit `true` filtern wir die leeren Zeilen heraus, und können diese nun entfernen lassen, indem über das Dropdown-Menü in der ersten Spalte `All` -> `Edit rows` -> `Remove matching rows` auswählen.
+Mit dem Text Facet lassen sich auch die leeren Zeilen auswählen, indem wir hier an letzter Stelle `(blank)` anklicken.
+Schließlich entfernen wir sie, indem über das Dropdown-Menü in der ersten Spalte `All` -> `Edit rows` -> `Remove matching rows` ausgewählt wird.
 
 Zurück bleiben nur die Zeilen mit - in diesem Falle eindeutigen - Werten, wovon wir uns mit einem Blick in den Text Facet überzeugen können. 
 

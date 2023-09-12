@@ -2,19 +2,23 @@
 
 Für den Import nach Imdas müssen wir als Letztes die Ortsbezeichnungen mit den in IMDAS verwendeten Ortsthesauri abgleichen und den Thesauruspfad des entsprechenden Ortes eintragen (s. Abschnitt [2.1](2_1_IMDAS-Import.md)).
 
-Dafür benötigen wir zunächst den Export der Ortsthesauri in einem Tabellenformat, der insbesondere die Pfade und GeoNamesIDs der Orte enthält.
-Als nächstes müssen wir in unsere Körperschafts-Tabelle wieder eine ID über eine reconciliation ergänzen, diesmal bei den Orten und mit einem Reconciliation-Service für GeoNames.
-Schließlich nutzen wir in OpenRefine die GREL-Funktion `cross()`, die es uns erlaubt, Daten zwischen verschiedenen vorhandenen OpenRefine-Projekten auszustauschen.
-Dies ermöglicht es uns, über die GeoNames-ID in unserer Tabelle die Pfade zum jeweiligen Ort aus der Thesaurus-Tabelle zu laden.
+Im folgenden werden wir folgende Schritte durchführen:
+- Zunächst müssen wir in unsere Körperschafts-Tabelle wieder mittels reconciliation eine ID ergänzen: und zwar die GeoNames-ID der Orte.
+- Dann müssen wir die Exporttabelle des IMDAS-Ortsthesaurus in OpenRefine laden. Wichtig sind in dieser Tabelle die Spalten `GeoNamesID` und `PFAD`.[^3]
+- Schließlich nutzen wir in OpenRefine die GREL-Funktion [`cross()`](https://openrefine.org/docs/manual/grelfunctions#crosscell-s-projectname-optional-s-columnname-optional), die es uns erlaubt, Daten zwischen verschiedenen OpenRefine-Projekten auszustauschen.
+So können wir über den Abgleich der GeoNamesID in beiden Tabellen den passenden Thesauruspfad in das Körperschafts-Datenset laden.
+
+[^3]: Der Export des Ortsthesaurus kann durch das BSZ vorgenommen werden.
 
 ### Reconciliation mit GeoNames
 
 Der Abgleich mit GeoNames läuft ähnlich wie [im Abschnitt vorher](2_5_Normdatenabgleich.md) beschrieben.
-Als webservice für GeoNames geben wir unter `Add standard service...` die URL `https://fornpunkt.se/apis/reconciliation/geonames` ein.[^3]
+Als webservice für GeoNames geben wir unter `Add standard service...` die URL `https://fornpunkt.se/apis/reconciliation/geonames` ein.[^4]
+Die reconciliation führen wir in der Spalte `Ort` durch.
 
-Nach dem matchen der Ortsbegriffe mit GeoNames, können wir wieder über das Spaltenmenü -> `Reconcile` -> `Add entity identifiers column...` die GeoNames-IDs in einer eigenen Spalte ergänzen.
+Nach dem matchen der Ortsbegriffe mit GeoNames, können wir wieder über das Spaltenmenü -> `Reconcile` -> `Add entity identifiers column...` die GeoNames-IDs in einer eigenen Spalte namens `GeoNamesID` ergänzen.
 
-[^3]: Der von der schwedischen Citicen Science-Plattform fornpunkt.se angebotene reconciliation-service für GeoNames bietet weniger Funktion an als z. B. die GND-Schnittstelle von lobid. Ein alternativer Weg wäre, zunächst die Orte mit wikidata zu matchen, um aus wikidata die GeoNames-ID zu ergänzen. 
+[^4]: Der von der schwedischen Citicen Science-Plattform fornpunkt.se angebotene reconciliation-service für GeoNames bietet weniger Funktion an als z. B. die GND-Schnittstelle von lobid. Ein alternativer Weg wäre, zunächst die Orte mit wikidata zu matchen, um aus wikidata die GeoNames-ID zu ergänzen. 
 
 ### Abgleich mit dem Thesaurusexport
 
@@ -30,7 +34,7 @@ In das Expression-Fenster geben wir nun die cross-Funktion ein:
 `cell.cross("Ortsthesaurus", "GeoNamesID")[0].cells["PFAD"].value`
 
 Im Grunde bedeutet dieser Ausdruck:
-1. `cell.corss("Ortsthesaurus", "GeoNamesID")`: Gehe in das Projekt "Ortsthesaurus" und Vergleiche die Werte in dieser Spalte mit der dortigen Spalte "GeoNamesID" ab.
+1. `cell.cross("Ortsthesaurus", "GeoNamesID")`: Gehe in das Projekt "Ortsthesaurus" und Vergleiche die Werte in dieser Spalte mit der dortigen Spalte "GeoNamesID" ab.
 2. `cells["PFADE"].value`: Stimmen diese Werte und die GeoNames-ID des "Ortsthesaurus"-Projektes überein, ergänze hier den entsprechenden Wert aus der Spalte "PFAD" des Projektes "Ortsthesaurus".
 
 ![Spalte ergänzen durch corss-Funktion](../images/cross.png)

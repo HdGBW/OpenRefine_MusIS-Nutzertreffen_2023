@@ -10,7 +10,7 @@ Am HdGBW wird für Orte innerhalb Deutschlands der BSZ-Ortsthesaurus verwendet, 
 Beispiele für Thesauruspfade:
     - Mannheim: `Deutschland <DE>§Baden-Württemberg <BL>§Regierungsbezirk Karlsruhe <RB>§Rhein-Neckar <Reg>§Stadtkreis Mannheim <Kr>§Mannheim <Gm>§Mannheim <O>`
     - Paris: `Erde§Europa§Frankreich§Île-de-France§Paris§Paris`
-- Einträge in `Normdaten` müssen dem Schema `O-GND~{GND-ID}~http://d-nb.info/gnd/{GND-ID}` folgen. Beispiel für das HdGBW mit der GND-ID 5071403: `O-GND~5071403-X~https://d-nb.info/gnd/5071403-X`
+- Einträge in `Normdaten` müssen dem Schema `Normdatenquelle~ID~URI` folgen. Beispiel für das HdGBW mit der GND-ID 5071403-X: `O-GND~5071403-X~https://d-nb.info/gnd/5071403-X`
 
 Ein Eintrag wie 
 

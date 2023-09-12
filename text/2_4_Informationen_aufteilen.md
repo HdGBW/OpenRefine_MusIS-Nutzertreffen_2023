@@ -4,18 +4,18 @@ Nachdem wir nun sichergestellt haben, dass jeder Eintrag eindeutig ist, können 
 
 Dazu können wir hier zwei Varianten wählen:
 - Variante 1 ist das manuelle Vorgehen
-- Variante 2 laden wir die beabsichtigten Arbeitsschritte aus einer Vorlage, um sie automatisch umzusetzen.
+- bei Variante 2 laden wir die beabsichtigten Arbeitsschritte aus einer Vorlage, um sie automatisch umzusetzen.
 
 ### Variante 1: Spalten erstellen
 
 Um die Spalte `Herkunft_Leihgeber` anhand des `;` in mehrere Spalten aufzuteilen geht man wieder in das Spaltenmenü -> `Edit colum` -> `Split into several columns...`, und gibt im sich öffnenden Fenster als Seperator `;` ein.
 
-Da bei manchen Feldern den Semikolons ein Leerzeichen folgte, haben wir nun wieder ein paar Zellen mit Leerzeichen am Anfang.
+Da bei manchen Feldern den Semikolons ein Leerzeichen folgte, haben wir in den neuen Spalten wieder ein paar Zellen mit Leerzeichen am Anfang.
 Diese werden wir in allen Spalten los, wenn wir in der Spalte `All` -> `Edit all columns` -> `Trim leading and trailing whitesapce...` auswählen.
 
 Wenn wir nun die erste und zweite Spalte über Spaltenmenü -> `Edit column` -> `Rename this column...` in `Nachname` und `Adresse` umbenannt haben, sind wir mit diesen fertig.
 
-Die Spalte mit den Postleitzahlen und Orten teilen wir wieder anhand eines Trennzeichen auf, diesmal mit dem Leerzeichen ` ` als Delimiter.
+Die Spalte mit den Postleitzahlen und Orten (die dritte Spalte) teilen wir wieder anhand eines Trennzeichen auf (`Split into several columns ...`), diesmal mit dem Leerzeichen ` ` als Delimiter.
 Die so gewonnene zweite Spalte können wir auch gleich in `Ort` umbenennen.
 
 ### Variante 2: Operation History verwenden
@@ -25,12 +25,13 @@ Für solche Fälle bietet sich die Exportfunktion der Operation History an:
 Aus jedem Projekt können Arbeitsschritte (komplett oder auszugsweise) im JSON-Format exportiert werden, um sie in einem anderen Projekt zu laden und automatisch anzuwenden.
 Dies ermöglicht eine gewisse Form der **Automatisierung repetitiver Aufgaben bei gleich strukturierten Datensets**.
 
-Um nun die oben beschriebene Transformation zu laden, öffnen Sie die in diesem Repository enthaltene (Spalten_erstellen.json)[./data/Spalten_erstellen.json] mit einem einfachen Texteditor, und kopieren Sie den Inhalt in das Fenster "Apply Operation History", dass Sie im "Undo/Redo"-Seitenpanel üerb den Button `Apply...` öffnen können.
+Um nun die als Variante 1 beschriebene Transformation zu laden, öffnen Sie die in diesem Repository enthaltene [Spalten_erstellen.json](./data/Spalten_erstellen.json) mit einem einfachen Texteditor.
+Im "Undo/Redo"-Seitenpanel können sie über den Button `Apply...` die Inhalte der json-Datei in das Fenster "Apply Operation History" einfügen.
+Mit einem Klick auf `Perform operations` werden alle enthaltenen Transformationen umgesetzt.
 
 ![Apply Operation History mit JSON-Inhalt](../images/Apply_Operation_History.png)
 *Die in JSON verfassten Arbeitsschritte aus der Datei "Spalten_erstellen.json" im Apply Operation History-Fenster.*
 
-Mit einem Klick auf `Perform operations` werden alle enthaltenen Transformationen umgesetzt.
 
 ### Staat-Spalte aus gefilterter PLZ-Spalte
 
