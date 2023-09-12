@@ -19,22 +19,22 @@ Nach dem matchen der Ortsbegriffe mit GeoNames, können wir wieder über das Spa
 ### Abgleich mit dem Thesaurusexport
 
 Für die Pfade müssen wir als nächstes die Excel-Tabelle mit den Thesaurusexport in OpenRefine laden.
-Laden Sie für dieses Beispiel die Tabelle ["Thesauruspfade.xlsx"](../data/Thesauruspfade.xlsx) aus diesem Repository herunter.
-Über den `Open...`-Button im oberen rechten Eck öffnet sich ein neuer Tab im Browser, und wir laden die Thesauruspfade.xlsx wie [zu Beginn beschrieben](2_2_Installation.md).
-In der Vorschau geben wir dem neuen Projekt unter "Project name" den Namen "Thesauruspfade".
+Laden Sie für dieses Beispiel die Tabelle ["Export_Ortsthesaurus.xlsx"](../data/Export_Ortsthesaurus.xlsx) aus diesem Repository herunter.
+Über den `Open...`-Button im oberen rechten Eck öffnet sich ein neuer Tab im Browser, und wir laden die Export_Ortsthesaurus.xlsx wie [zu Beginn beschrieben](2_2_Installation.md).
+In der Vorschau geben wir dem neuen Projekt unter "Project name" den Namen "Ortsthesaurus".
 
 Nun wechseln wir wieder in den Tab mit unseren Körperschafts-Daten.
 Dort lassen wir aus der GeoNames-ID-Spalte eine neue Spalte erstellen (Spaltenmenü -> `Edit column` -> `Add column based on this column...`) mit dem Titel `Thesauruspfad`.
 In das Expression-Fenster geben wir nun die cross-Funktion ein:
 
-`cell.cross("Thesauruspfade", "GeoNamesID")[0].cells["PFAD"].value`
+`cell.cross("Ortsthesaurus", "GeoNamesID")[0].cells["PFAD"].value`
 
 Im Grunde bedeutet dieser Ausdruck:
-1. `cell.corss("Thesauruspfade", "GeoNamesID")`: Gehe in das Projekt "Thesauruspfade" und Vergleiche die Werte in dieser Spalte mit der dortigen Spalte "GeoNamesID" ab.
-2. `cells["PFADE"].value`: Stimmen diese Werte und die GeoNames-ID der Thesauruspfade überein, ergänze hier den entsprechenden Wert aus der Spalte "PFAD" des Projektes "Thesauruspfade".
+1. `cell.corss("Ortsthesaurus", "GeoNamesID")`: Gehe in das Projekt "Ortsthesaurus" und Vergleiche die Werte in dieser Spalte mit der dortigen Spalte "GeoNamesID" ab.
+2. `cells["PFADE"].value`: Stimmen diese Werte und die GeoNames-ID des "Ortsthesaurus"-Projektes überein, ergänze hier den entsprechenden Wert aus der Spalte "PFAD" des Projektes "Ortsthesaurus".
 
 ![Spalte ergänzen durch corss-Funktion](../images/cross.png)
-*Ergänzen der Thesauruspfade aus der Thesauruspfade.xlsx in die Körperschaften-Tabelle mittels `cross()`-Funktion.*
+*Ergänzen der Thesauruspfade aus der Export_Ortsthesaurus.xlsx in die Körperschaften-Tabelle mittels `cross()`-Funktion.*
 
 Nachdem wir uns über die Vorschau versichert haben, dass die Thesauruspfade korrekt übernommen werden, und wir die Transformation bestätigen, bleibt uns nur noch, die Spalten `Ort` und `GeoNamesID` zu löschen, und die Spalte `Thesauruspfad` in `Ort` umzubenennen.
 
